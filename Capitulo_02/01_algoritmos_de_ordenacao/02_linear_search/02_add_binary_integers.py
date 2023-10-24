@@ -1,21 +1,24 @@
-def add_binary_integers(a, b):
-  n = len(a)
-  carry = 0
-  c = [0] * (n+1)
-  for i in range(n -1, -1, -1):
-    # Soma os digitos de a, b e carry
-    total = a[i] + b[i] + carry
-    # Atualiza o digito resultante em c
-    c[i+1] = total % 2
-    # Calcula o carry para a proxima interação
-    carry = total // 2
-  # O digito mais significativos (MSB) de c pode conter um carry
-  c[0] = carry
-  return c
+def soma_binarios_inteiros(binario_a, binario_b):
+    tamanho = len(binario_a)
+    carry = 0
+    resultado = [0] * (tamanho + 1)
+    
+    for i in range(tamanho - 1, -1, -1):
+        # Soma os dígitos de binario_a, binario_b e carry
+        total = binario_a[i] + binario_b[i] + carry
+        # Atualiza o dígito resultante em resultado
+        resultado[i + 1] = total % 2
+        # Calcula o carry para a próxima iteração
+        carry = total // 2
+    
+    # O dígito mais significativo (MSB) de resultado pode conter um carry
+    resultado[0] = carry
+    
+    return resultado
 
 # Exemplo de entrada
-a = [1, 0, 1, 1] # Representa o número binário 1011
-b = [1, 1, 0, 1] # Representa o número binário 1101
+binario_a = [1, 0, 1, 1]  # Representa o número binário 1011
+binario_b = [1, 1, 0, 1]  # Representa o número binário 1101
 
-result = add_binary_integers(a, b)
-print('O resultado da soma em binario é: ', result)
+resultado_soma = soma_binarios_inteiros(binario_a, binario_b)
+print('O resultado da soma em binário é:', resultado_soma)
